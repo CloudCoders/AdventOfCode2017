@@ -11,10 +11,10 @@ if __name__ == "__main__":
     displacement = size/2
 
     for i in range(size):
-        if sequence[i] == sequence[(i+1)%size]:
+        if sequence[i] == sequence[int((i+1)%size)]:
             part1 += int(sequence[i])
 
-        if sequence[i] == sequence[(i+displacement)%size]:
+        if sequence[i] == sequence[int((i+displacement)%size)]:
             part2 += int(sequence[i])
 
     print("Solution for part 1:", part1)
