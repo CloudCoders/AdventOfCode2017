@@ -4,7 +4,7 @@ def solve_part1(sequence):
     size = int(len(sequence))
 
     for i in range(size-1):
-        if sequence[i] == sequence[(i+1) % size]:
+        if sequence[i] == sequence[(i+1)]:
             part1 += int(sequence[i])
 
     if sequence[0] == sequence[-1]:
