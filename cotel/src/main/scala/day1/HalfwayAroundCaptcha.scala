@@ -19,7 +19,7 @@ object HalfwayAroundCaptcha {
 
     tuples.foldLeft(0) {
       case (acc, (x, y, z)) => if (x == y && y == z) acc + x else acc
-    }
+    } * 2
   }
 
 }
