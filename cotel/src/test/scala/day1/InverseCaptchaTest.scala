@@ -9,12 +9,16 @@ class InverseCaptchaTest extends FunSuite with Matchers {
     captcha("12") shouldBe 0
   }
 
-  test("Captcha '11' should return 2") {
-    captcha("11") shouldBe 2
+  test("Captcha '1111' should return 4") {
+    captcha("1111") shouldBe 4
   }
 
   test("Captcha '1122' should return 3") {
     captcha("1122") shouldBe 3
+  }
+
+  test("Captcha '91212129' should return 9") {
+    captcha("91212129") shouldBe 9
   }
 
 }
