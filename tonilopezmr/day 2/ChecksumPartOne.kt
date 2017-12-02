@@ -6,9 +6,9 @@ import org.junit.Test
 class ChecksumPartOne {
 
   fun checksum(of: Array<Array<Int>>): Int {
-    return of.fold(emptyList<Int>()) { acc, a ->
-      acc.plus(maxMinusMin(a))
-    }.reduce { acc, i -> acc + i }
+    return of.fold(0) { acc, a ->
+      acc + maxMinusMin(a)
+    }
   }
 
   fun maxMinusMin(array: Array<Int>): Int {

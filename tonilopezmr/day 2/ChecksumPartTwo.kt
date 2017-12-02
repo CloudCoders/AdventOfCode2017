@@ -6,9 +6,9 @@ import org.junit.Test
 class ChecksumPartTwo {
 
   fun evenlyDivisibleChecksum(of: Array<Array<Int>>): Int =
-      of.fold(emptyList<Int>()) { acc, a ->
-        acc + listOf(evenlyDivisibleDivision(a.sorted()))
-      }.reduce { acc, i -> acc + i }
+      of.fold(0) { acc, a ->
+        acc + evenlyDivisibleDivision(a.sorted())
+      }
 
   fun evenlyDivisibleDivision(array: List<Int>): Int {
     for (a in array) {
