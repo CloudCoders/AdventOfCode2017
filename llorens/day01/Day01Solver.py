@@ -1,22 +1,10 @@
-import AoCReader
+def solve_part1(sequence):
 
-if __name__ == "__main__":
+    return sum(int(sequence[i]) for i in range(len(sequence)) if sequence[i] == sequence[(i+1) % len(sequence)])
 
-    sequence = AoCReader.get_input("01")
 
-    part1 = 0
-    part2 = 0
+def solve_part2(sequence):
 
-    size = len(sequence)
-    displacement = size/2
+    return sum(int(sequence[i]) for i in range(int(len(sequence)/2)) if sequence[i] == sequence[(i+int(len(sequence)/2))])*2
 
-    for i in range(size):
-        if sequence[i] == sequence[(i+1)%size]:
-            part1 += int(sequence[i])
-
-        if sequence[i] == sequence[(i+displacement)%size]:
-            part2 += int(sequence[i])
-
-    print("Solution for part 1:", part1)
-    print("Solution for part 2:", part2)
 
