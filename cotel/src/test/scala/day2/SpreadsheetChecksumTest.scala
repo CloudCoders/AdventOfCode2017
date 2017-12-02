@@ -18,4 +18,18 @@ class SpreadsheetChecksumTest extends FunSuite with Matchers {
     checksum(spreadsheet) shouldBe 18
   }
 
+  /* 1 7 9 1
+     3 9 21 1
+     1 1 1 1 2
+   */
+  test("Spreadsheet checksum should return 29") {
+    val spreadsheet = SpreadSheet(
+      Row(1, 7, 9, 1),
+      Row(3, 9, 21, 1),
+      Row(1, 1, 1, 1, 2)
+    )
+
+    checksum(spreadsheet) shouldBe 29
+  }
+
 }

@@ -9,7 +9,11 @@ object SpreadsheetChecksum {
   def SpreadSheet(rows: Row*) = List(rows: _*)
 
   def checksum(spreadSheet: SpreadSheet): Int = {
-    18
+    spreadSheet
+      .map { list => (list.max, list.min) }
+      .foldLeft(0) {
+        case (acc, (max, min)) => acc + (max - min)
+      }
   }
 
 }
