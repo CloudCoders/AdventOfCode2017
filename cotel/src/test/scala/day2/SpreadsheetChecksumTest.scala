@@ -20,8 +20,7 @@ class SpreadsheetChecksumTest extends FunSuite with Matchers {
 
   /* 1 7 9 1
      3 9 21 1
-     1 1 1 1 2
-   */
+     1 1 1 1 2 */
   test("Spreadsheet checksum should return 29") {
     val spreadsheet = SpreadSheet(
       Row(1, 7, 9, 1),
@@ -30,6 +29,19 @@ class SpreadsheetChecksumTest extends FunSuite with Matchers {
     )
 
     checksum(spreadsheet) shouldBe 29
+  }
+
+  /* 5 9 2 8
+     9 4 7 3
+     3 8 6 5 */
+  test ("Spreadsheed divsum should return 9") {
+    val spreadsheet = SpreadSheet(
+      Row(5,9,2,8),
+      Row(9,4,7,3),
+      Row(3,8,6,5)
+    )
+
+    divsum(spreadsheet) shouldBe 9
   }
 
 }
