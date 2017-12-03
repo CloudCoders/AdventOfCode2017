@@ -90,7 +90,7 @@ object SpiralMatrix {
     var fn = 1
     var expo = 1
 
-    val arraySize = calculateArraySize(upToN)+2
+    val arraySize = calculateArraySize(upToN) + 2
     var x = arraySize / 2
     var y = arraySize / 2
 
@@ -141,13 +141,7 @@ object SpiralMatrix {
   }
 
   private def sumNeighbors(matrix: Matrix[Int], position: (Int, Int)): Int =
-    matrix(position._2 - 1)(position._1 - 1) +
-    matrix(position._2 - 1)(position._1) +
-    matrix(position._2 - 1)(position._1 + 1) +
-    matrix(position._2)(position._1 + 1) +
-    matrix(position._2 + 1)(position._1 - 1) +
-    matrix(position._2 + 1)(position._1) +
-    matrix(position._2 + 1)(position._1 + 1) +
-    matrix(position._2)(position._1 - 1)
+    (for (i <- -1 until 2;
+          j <- -1 until 2) yield matrix(position._2 + i)(position._1 + j)).sum
 
 }
