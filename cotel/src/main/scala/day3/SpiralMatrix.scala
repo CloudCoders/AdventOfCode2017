@@ -86,4 +86,68 @@ object SpiralMatrix {
     matrix
   }
 
+  def firstNumberBiggerThanInput(upToN: Int): Int = {
+    var fn = 1
+    var expo = 1
+
+    val arraySize = calculateArraySize(upToN)+2
+    var x = arraySize / 2
+    var y = arraySize / 2
+
+    val matrix: Matrix[Int] = Array.fill(arraySize)(Array.fill(arraySize)(0))
+
+    while (fn < Math.pow(arraySize, 2)) {
+      val per = Math.pow(expo, 2) - Math.pow(expo - 2, 2)
+      if (per == 0) matrix(x)(y) = 1
+      else {
+        x += 1
+        fn += 1
+        matrix(y)(x) = sumNeighbors(matrix, (x, y))
+        if (matrix(y)(x) > upToN) return matrix(y)(x)
+
+        for (_ <- 0 until expo - 2) yield {
+          y -= 1
+          fn += 1
+          matrix(y)(x) = sumNeighbors(matrix, (x, y))
+          if (matrix(y)(x) > upToN) return matrix(y)(x)
+        }
+
+        for (_ <- 1 until expo) yield {
+          x -= 1
+          fn += 1
+          matrix(y)(x) = sumNeighbors(matrix, (x, y))
+          if (matrix(y)(x) > upToN) return matrix(y)(x)
+        }
+
+        for (_ <- 1 until expo) yield {
+          y += 1
+          fn += 1
+          matrix(y)(x) = sumNeighbors(matrix, (x, y))
+          if (matrix(y)(x) > upToN) return matrix(y)(x)
+        }
+
+        for (_ <- 1 until expo) yield {
+          x += 1
+          fn += 1
+          matrix(y)(x) = sumNeighbors(matrix, (x, y))
+          if (matrix(y)(x) > upToN) return matrix(y)(x)
+        }
+      }
+
+      expo += 2
+    }
+
+    -1
+  }
+
+  private def sumNeighbors(matrix: Matrix[Int], position: (Int, Int)): Int =
+    matrix(position._2 - 1)(position._1 - 1) +
+    matrix(position._2 - 1)(position._1) +
+    matrix(position._2 - 1)(position._1 + 1) +
+    matrix(position._2)(position._1 + 1) +
+    matrix(position._2 + 1)(position._1 - 1) +
+    matrix(position._2 + 1)(position._1) +
+    matrix(position._2 + 1)(position._1 + 1) +
+    matrix(position._2)(position._1 - 1)
+
 }

@@ -22,4 +22,12 @@ class SpiralMatrixTest extends FunSuite with Matchers {
     distanceToCenterOfMatrix(1024) shouldBe 31
   }
 
+  test("First number bigger than 12 written in spiralSumMatrix should be 23") {
+    firstNumberBiggerThanInput(12) shouldBe 23
+  }
+
+  test("First number bigger than 25 written in spiralSumMatrix should be 26") {
+    firstNumberBiggerThanInput(25) shouldBe 26
+  }
+
 }
