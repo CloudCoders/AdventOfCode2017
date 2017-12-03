@@ -11,15 +11,15 @@ def solve_part_1(sequence):
     count = 0
 
     for line in sequence.splitlines():
-        words = line.split()
-        words = [x for x in map(int, words)]
-        min_number = words[0]
-        max_number = words[0]
-        for i in range(1, len(words)):
-            if words[i] < min_number:
-                min_number = words[i]
-            if words[i] > max_number:
-                max_number = words[i]
+        number_list = line.split()
+        number_list = [x for x in map(int, number_list)]
+        min_number = number_list[0]
+        max_number = number_list[0]
+        for i in range(1, len(number_list)):
+            if number_list[i] < min_number:
+                min_number = number_list[i]
+            elif number_list[i] > max_number:
+                max_number = number_list[i]
 
         count += max_number-min_number
 
