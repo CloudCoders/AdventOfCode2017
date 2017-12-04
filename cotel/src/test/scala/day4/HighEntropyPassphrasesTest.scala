@@ -2,7 +2,7 @@ package day4
 
 import org.scalatest.{FunSuite, Matchers}
 
-class HighEntropyPassphrassesTest extends FunSuite with Matchers {
+class HighEntropyPassphrasesTest extends FunSuite with Matchers {
   import HighEntropyPassphrasses._
 
   test("Passphrase 'aa bb cc dd ee' should be valid") {
