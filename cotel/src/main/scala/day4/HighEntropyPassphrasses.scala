@@ -1,6 +1,8 @@
 package day4
 
-object HighEntropyPassphrases {
+import scala.io.Source
+
+object HighEntropyPassphrasses {
 
   def isValidPassphrase(passphrase: String, checked: List[String] = List(), result: Boolean = true): Boolean = {
     def recursion(passphrase: List[String], checked: List[String] = List(), result: Boolean = true): Boolean =
@@ -19,6 +21,15 @@ object HighEntropyPassphrases {
     (for (word: String <- passlist)
       yield passlist.count(word == _) <= 1)
       .forall(_ == true)
+  }
+
+  def solveProblemWithInput(fileName: String): Int = {
+    val bufferedSource = Source.fromFile(this.getClass.getClassLoader.getResource(fileName).getPath)
+    val result = (for (line <- bufferedSource.getLines)
+      yield isValidPassphrase(line)).count(_ == true)
+    bufferedSource.close()
+
+    result
   }
 
 }
