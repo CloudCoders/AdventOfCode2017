@@ -22,4 +22,10 @@ class TrampolinesTest extends FunSuite with Matchers {
     instructionsUntilOut(List(1,1)) shouldBe 2
   }
 
+  // Part 2
+
+  test("For instructions [0, 3, 0, 1, -3] pointer will be out in 10 steps") {
+    instructionsUntilOutPart2(List(0, 3, 0, 1, -3)) shouldBe 10
+  }
+
 }
