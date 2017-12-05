@@ -7,25 +7,25 @@ class TrampolinesTest extends FunSuite with Matchers {
 
 
   test("For instructions [0, 3, 0, 1, -3] pointer will be out in 5 steps") {
-    instructionsUntilOut(List(0, 3, 0, 1, -3)) shouldBe 5
+    instructionsUntilOut(List(0, 3, 0, 1, -3)) { _+1 } shouldBe 5
   }
 
   test("For instructions [0, 0] pointer will be out in 4 steps") {
-    instructionsUntilOut(List(0, 0)) shouldBe 4
+    instructionsUntilOut(List(0, 0)) { _+1 } shouldBe 4
   }
 
   test("For instructions [1, 0, -5] pointer will be out in 4 steps") {
-    instructionsUntilOut(List(1, 0, -5)) shouldBe 4
+    instructionsUntilOut(List(1, 0, -5)) { _+1 } shouldBe 4
   }
 
   test("For instructions [1, 1] pointer will be out in 2 steps") {
-    instructionsUntilOut(List(1,1)) shouldBe 2
+    instructionsUntilOut(List(1,1)) { _+1 } shouldBe 2
   }
 
   // Part 2
 
   test("For instructions [0, 3, 0, 1, -3] pointer will be out in 10 steps") {
-    instructionsUntilOutPart2(List(0, 3, 0, 1, -3)) shouldBe 10
+    instructionsUntilOut(List(0, 3, 0, 1, -3)) { x => if (x >= 3) x-1 else x+1 } shouldBe 10
   }
 
 }
