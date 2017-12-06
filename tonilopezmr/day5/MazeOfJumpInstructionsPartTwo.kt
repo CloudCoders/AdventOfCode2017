@@ -14,8 +14,7 @@ class MazeOfJumpInstructionsPartTwo {
 
     while (offset < input.size) {
       val aux = instructions[offset]
-      instructions.removeAt(offset)
-      instructions.add(offset, if (aux >= 3) aux - 1 else aux + 1)
+      instructions[offset] = if (aux >= 3) aux - 1 else aux + 1
       offset += aux
       steps++
     }
