@@ -75,6 +75,10 @@ gradle-app.setting
 #### java ####
 
 *.class
+*.bluej
+*.class
+*.ctxt
+
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
