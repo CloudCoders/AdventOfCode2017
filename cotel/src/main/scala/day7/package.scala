@@ -2,18 +2,32 @@ import scala.io.Source
 import scala.util.Try
 
 package object day7 {
-  case class Disc(identifier: String, weight: Int, childs: List[Disc])
+  case class Disc(identifier: String, weight: Int, children: List[Disc])
+  case class Tree(identifier: String, weight: Int, parent: Tree) {
+    val nodes: Map[String, Tree] = Map()
+
+    def children = nodes.values
+    def
+  }
 
   def getBaseDisc(input: List[String]): Option[Disc] = {
     val allDiscs = input.map(parseLine)
-    val childs = allDiscs.flatMap(_.childs).map(_.identifier)
+    val childs = allDiscs.flatMap(_.children).map(_.identifier)
 
     allDiscs.find { disc => !childs.contains(disc.identifier) }
   }
 
   def getDesiredWeight(input: List[String]): Int = {
-    val allDiscs = input.map(parseLine)
-    val baseDisc:
+    val allDiscs = input.map(parseLine).groupBy(_.identifier)
+    val baseDisc = getBaseDisc(input)
+    updatedWeights(baseDisc.get, allDiscs)
+  }
+
+  def updatedWeights(disc: Disc, allDiscs: Map[String, Disc]): Unit = {
+    disc.children.foreach { child =>
+      updatedWeights(allDiscs(child.identifier), allDiscs)
+      allDiscs.updated(disc.identifier, allDiscs(disc.identifier).weight + allDiscs(child).weight)
+    }
   }
 
   def parseLine(line: String): Disc = {

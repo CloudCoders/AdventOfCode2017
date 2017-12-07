@@ -9,6 +9,10 @@ class RecursiveCircusTest extends FunSuite with Matchers {
     getBaseDisc(parseInput("Day7Test.txt")).map(_.identifier) shouldBe Some("tknk")
   }
 
+  test("Test input desired weight should be 60") {
+    getDesiredWeight(parseInput("Day7Test.txt")) shouldBe 60
+  }
+
   // Helpers
 
   test("LineParser parses line with -> correctly") {
