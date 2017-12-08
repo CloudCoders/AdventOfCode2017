@@ -1,0 +1,327 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13839,        319]
+NotebookOptionsPosition[     13522,        303]
+NotebookOutlinePosition[     13866,        318]
+CellTagsIndexPosition[     13823,        315]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileText", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<C:\\\\Users\\\\Carlos\\\\Documents\\\\GitHub\\\\Advent_of_code\\\\\
+Day7\\\\input.txt\>\"", ",", "\"\<Text\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fileText", " ", "=", " ", 
+     RowBox[{"StringDelete", "[", 
+      RowBox[{"fileText", ",", "\"\<(\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fileText", " ", "=", " ", 
+     RowBox[{"StringDelete", "[", 
+      RowBox[{"fileText", ",", "\"\<)\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fileText", " ", "=", " ", 
+     RowBox[{"StringDelete", "[", 
+      RowBox[{"fileText", ",", "\"\<,\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"x", " ", "=", " ", 
+     RowBox[{"StringSplit", "[", 
+      RowBox[{"fileText", " ", ",", "\"\<\\n\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pcssFile", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
+     RowBox[{"i", " ", "\[LessEqual]", " ", 
+      RowBox[{"Length", "[", "x", "]"}]}], ",", " ", 
+     RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"auxAppendFlecha", " ", "=", " ", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], " ", ",", "\"\<->\>\""}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"auxAppendFlecha", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], " ", "=", " ", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{
+         RowBox[{"auxAppendFlecha", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", "\"\< \>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "auxAppendFlecha", "]"}], ">", " ", "1"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"auxAppendFlecha", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], " ", "=", " ", 
+           RowBox[{"StringSplit", "[", 
+            RowBox[{
+             RowBox[{"auxAppendFlecha", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", "\"\< \>\""}], "]"}]}], 
+          ";"}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+       RowBox[{"PrependTo", "[", 
+        RowBox[{"auxAppendFlecha", ",", 
+         RowBox[{"-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"pcssFile", ",", "auxAppendFlecha"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
+     RowBox[{"i", " ", "\[LessEqual]", " ", 
+      RowBox[{"Length", "[", "pcssFile", "]"}]}], ",", " ", 
+     RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", 
+         RowBox[{"pcssFile", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "]"}], " ", "\[Equal]", " ", "2"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"pcssFile", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], " ", "=", " ", "1"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"con", " ", "=", " ", "True"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"While", "[", 
+    RowBox[{"con", ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"con", " ", "=", " ", "False"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
+        RowBox[{"i", " ", "\[LessEqual]", " ", 
+         RowBox[{"Length", "[", "pcssFile", "]"}]}], ",", " ", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"pcssFile", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}], " ", "\[Equal]", " ", 
+           "3"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"addition", " ", "=", " ", 
+            RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"For", "[", 
+             RowBox[{
+              RowBox[{"j", " ", "=", " ", "1"}], ",", 
+              RowBox[{"j", " ", "\[LessEqual]", " ", 
+               RowBox[{"Length", "[", 
+                RowBox[{
+                 RowBox[{"pcssFile", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ",", 
+              RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"sons", " ", "=", " ", 
+                RowBox[{
+                 RowBox[{"pcssFile", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"[", "3", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+               RowBox[{"sum", " ", "=", " ", "True"}], ";", " ", 
+               "\[IndentingNewLine]", 
+               RowBox[{"For", "[", 
+                RowBox[{
+                 RowBox[{"k", " ", "=", " ", "1"}], ",", " ", 
+                 RowBox[{"k", " ", "\[LessEqual]", " ", 
+                  RowBox[{"Length", "[", "pcssFile", "]"}]}], ",", " ", 
+                 RowBox[{"k", "++"}], ",", "\[IndentingNewLine]", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"sons", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}], " ", "\[Equal]", " ", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"pcssFile", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"pcssFile", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], " ", "\[Equal]", " ", 
+                    RowBox[{"-", "1"}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"sum", " ", "=", " ", "False"}], ";"}]}], 
+                    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+                    RowBox[{"AppendTo", " ", "[", 
+                    RowBox[{"addition", " ", ",", 
+                    RowBox[{
+                    RowBox[{"pcssFile", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+                  "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+                "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{"sum", ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"pcssFile", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], " ", "=", " ", 
+                RowBox[{"2", "+", " ", 
+                 RowBox[{"Total", "[", "addition", "]"}]}]}], ";"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"con", " ", "=", " ", "True"}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}]}]}]}], "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"max", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nameofmax", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
+     RowBox[{"i", " ", "\[LessEqual]", " ", 
+      RowBox[{"Length", "[", "pcssFile", "]"}]}], ",", " ", 
+     RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"pcssFile", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], " ", ">", " ", "max"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"max", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"pcssFile", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"nameofmax", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"pcssFile", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}]}]}], "\[IndentingNewLine]", 
+      "]"}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "nameofmax", "]"}], ";"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.72164525084925*^9, 3.7216453311156163`*^9}, {
+   3.721645381028125*^9, 3.721645381949971*^9}, {3.7216454233610106`*^9, 
+   3.7216454750682764`*^9}, {3.721645513511614*^9, 3.721645535253471*^9}, {
+   3.721645645069439*^9, 3.721645679344491*^9}, {3.721645711232889*^9, 
+   3.7216458136887627`*^9}, {3.72164591962733*^9, 3.7216459565014477`*^9}, {
+   3.721646010876176*^9, 3.721646045123597*^9}, {3.7216480960060387`*^9, 
+   3.721648190508588*^9}, {3.7216484138909955`*^9, 3.721648585514908*^9}, {
+   3.7216486363926935`*^9, 3.7216487066061897`*^9}, {3.7216489655160933`*^9, 
+   3.7216490725179896`*^9}, {3.721649143460416*^9, 3.721649185224337*^9}, {
+   3.7216492244745803`*^9, 3.7216493116490097`*^9}, {3.7216494663295083`*^9, 
+   3.7216495074859085`*^9}, {3.7216495784069705`*^9, 
+   3.7216495895049825`*^9}, {3.7216496342856083`*^9, 
+   3.7216496367507706`*^9}, {3.721649674271869*^9, 3.7216497119410763`*^9}, {
+   3.721649762633978*^9, 3.721649770040471*^9}, {3.721649824945647*^9, 
+   3.7216498863751693`*^9}, {3.7216499783242316`*^9, 
+   3.7216500211023383`*^9}, {3.7216500602137275`*^9, 3.721650120120057*^9}, {
+   3.7216501557146435`*^9, 3.721650191838674*^9}, {3.721650319903475*^9, 
+   3.721650365189539*^9}, {3.7216503958635154`*^9, 3.721650600308799*^9}, {
+   3.7216506366652*^9, 3.721650744394264*^9}, {3.7216508334420223`*^9, 
+   3.721650871814514*^9}, {3.721650908200006*^9, 3.721650920107539*^9}, {
+   3.7216510520720377`*^9, 3.7216510629832*^9}, {3.7216512170221405`*^9, 
+   3.721651268420375*^9}, {3.7216513450931025`*^9, 3.7216513799672203`*^9}, {
+   3.721651473333804*^9, 3.721651528375145*^9}, {3.7216516160037403`*^9, 
+   3.721651646846002*^9}, {3.7216517143187933`*^9, 3.7216517636572604`*^9}, {
+   3.7216518096035285`*^9, 3.7216518162665606`*^9}, {3.7216518557994184`*^9, 
+   3.7216519463586793`*^9}, 3.721652022980643*^9, {3.721652096367157*^9, 
+   3.721652111961379*^9}, {3.7216521560448413`*^9, 3.721652356830801*^9}, {
+   3.7216523891691885`*^9, 3.7216523962842107`*^9}, {3.721652428768444*^9, 
+   3.7216528230489435`*^9}, 3.721653466586862*^9, {3.7216536642007875`*^9, 
+   3.7216537097690887`*^9}, {3.7216537520301657`*^9, 3.721653798455259*^9}, {
+   3.7216538304438334`*^9, 3.721653865619668*^9}, {3.7216539067274995`*^9, 
+   3.721653957646351*^9}, {3.7216669949387417`*^9, 3.7216669977393045`*^9}, {
+   3.7216670790344934`*^9, 3.721667192338935*^9}, {3.7216672444182777`*^9, 
+   3.7216672711919346`*^9}, {3.721667332661598*^9, 3.7216673911503887`*^9}, {
+   3.7216674232215757`*^9, 3.721667590251814*^9}, {3.7216677419336348`*^9, 
+   3.721667753876032*^9}, {3.7216696669836254`*^9, 3.7216696880354986`*^9}, {
+   3.7216698090010233`*^9, 3.72166989344783*^9}, {3.72166996902332*^9, 
+   3.721669990393959*^9}, {3.7216700411362524`*^9, 3.721670274053439*^9}, {
+   3.721670312075197*^9, 3.7216703615909877`*^9}, 3.7216704042770996`*^9, {
+   3.7216704406191154`*^9, 3.7216704606615734`*^9}, {3.7216705018841863`*^9, 
+   3.7216705144133053`*^9}, {3.721670552501659*^9, 3.7216705683446293`*^9}, {
+   3.721670957451151*^9, 3.7216709731896925`*^9}, {3.7216710989893904`*^9, 
+   3.7216711187261305`*^9}, {3.7216711527102947`*^9, 3.721671217934057*^9}, 
+   3.7216715324877896`*^9, {3.7216715662038107`*^9, 3.721671576368497*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"vgzejbd\"\>", ",", "\<\"10\"\>"}], "}"}]], "Print",
+ CellChangeTimes->{3.721671629070112*^9}]
+}, Open  ]]
+},
+WindowSize->{1579, 817},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.4 para Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 12786, 273, 1788, "Input"],
+Cell[13369, 297, 137, 3, 23, "Print"]
+}, Open  ]]
+}
+]
+*)
+
