@@ -1,9 +1,9 @@
 from collections import defaultdict
 
 
-def solve_part_1(input):
+def solve_part_1(raw_data):
 
-    lines = input.splitlines()
+    lines = raw_data.splitlines()
     count = 0
 
     for line in lines:
@@ -21,9 +21,9 @@ def solve_part_1(input):
     return count
 
 
-def solve_part_2(input):
+def solve_part_2(raw_data):
 
-    lines = input.splitlines()
+    lines = raw_data.splitlines()
     count = 0
 
     for line in lines:
