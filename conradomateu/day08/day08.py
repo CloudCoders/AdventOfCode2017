@@ -3,6 +3,7 @@ import operator
 
 def parse(op):
     dict[op[0]] = ops[op[1]](dict[op[0]], int(op[2]))
+    maxs.append(max(dict.values()))
 
 
 def parser(exp):
@@ -40,5 +41,7 @@ ops = {
     ">=": operator.ge,
     "<=": operator.le}
 
-
+maxs = []
 dict = {}
+
+
