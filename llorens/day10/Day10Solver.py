@@ -21,7 +21,7 @@ def reverse(sequence, ini, length):
 def knot_hash(sequence, lengths, iterations=1):
 
     size = len(sequence)
-    lengths = [int(x) for x in lengths.split(',')]
+    lengths = [int(x) for x in lengths]
     pos = 0
     skip_size = 0
 
@@ -80,13 +80,9 @@ def encode_in_hex(sequence):
 
 
 def solve_part_2(lengths):
-    sequence = ''
 
-    for i in range(256):
-        sequence += ',' + str(i)
-
-    sequence = sequence[:-1]
-    sequence = add_suffix(decode_to_ascii(sequence))
+    sequence = [x for x in range(256)]
+    lengths = add_suffix(decode_to_ascii(lengths))
     sparse_hash = knot_hash(sequence, lengths, iterations=64)
     dense_hash = densify(sparse_hash)
 
